@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="description" content="Sakk tábla">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Practice JavaScript by drawing</title>
+</head>
+<body>
+  <div id="cont1" Class="container">
+    <div class="canv canvChess">
+      <canvas id="Chess" height="450" width="450" style="border: 1px solid black">
+      </canvas>
+    </div>
+    <div id="chessCommit" class="divWorlds">
+      <h3>Ez itt egy sakktáblakészítő feladat eredménye.</h3>
+    </div>
+  </div>
+    
+<script>
+var canvas = document.getElementById('Chess');
+var context = canvas.getContext('2d');
+
+var cW = canvas.width;
+var cH = canvas.height;
+
+function drawCheckeredPattern(row,col) {
+  
+  var rowH = cH / row ;    /* rowHeight - sormagasság */
+  var colW  = cW / col ;   /* colWidth - oszlopszélesség */
+  var sorSzam = 1;         /* hányadik sort rajzolom ki */
+  var rowCount, colCountStart, colCount = 0;
+
+  for ( rowCount = 0; rowCount<cH; rowCount += rowH) {
+    if (sorSzam % 2 == 1) {   // Ez a vizsgálat azért kell, hogy a sorok
+      colCountStart = 1;      // minden második sorban ugyanazzal a színnel kezdődjenek,
+    } else {                  // vagyis a kiiratást el kell tolni egy 
+      colCountStart = 0;      // sakkmezővel minden egyes sor kiiratása után oda-vissza.
+    }
+    
+    // Itt rajzolok megy egy sor mezőt
+    for ( colCount = colCountStart; colCount<col; colCount += 2) {
+      context.fillRect(colW*colCount,rowCount,colW,rowH);
+    }
+    sorSzam++;
+  }
+  context.fillStyle = 'black';
+  
+}
+
+drawCheckeredPattern(8,8);
+</script>
+    
+</body>
+</html>

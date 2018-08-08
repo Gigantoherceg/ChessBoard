@@ -51,20 +51,44 @@ table {
 }
 
 body {
-	padding: 10px;
+    background-color: burlywood;
 }
 
 .container {
-    position: relative;
-}
-
-.canvChess {
-  position: absolute;
-  top: 0;
-  left: 400px;
+    text-align: center;
 }
 
 .divWorlds {
-    height: 450px;
-    max-width: 400px;
+    padding: 1rem;
+}
+
+h3 {
+    text-align: justify;
+    font-size: 120%;
+    font-family: sans-serif;
+    text-indent: 20px;
+    line-height: 1.2;
+}
+
+#Chess {
+    background-color: white;
+}
+
+@media (min-width: 430px) {
+    body {
+      justify-content: center;
+        display: flex;
+    }
+    .container {
+      margin: 10px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      width: auto;
+      max-width: 1024px;
+    }
+    .divWorlds, divChess {
+        display: inline-block;
+        float: left;
+    }
 }

@@ -4,20 +4,19 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <meta name="description" content="Sakk tábla">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Practice JavaScript by drawing</title>
 </head>
 <body>
-  <div id="cont1" Class="container">
-    <div class="canv canvChess">
-      <canvas id="Chess" height="450" width="450" style="border: 1px solid black">
+  <div Class="container">
+    <div class="divWorlds">
+      <h3>Ez itt egy sakktábla készítő feladat eredménye. Ez itt egy sakktábla készítő feladat eredménye. Ez itt egy sakktábla készítő feladat eredménye.</h3>
+    </div>
+    <div class="divChess">
+      <canvas id="Chess" height="300" width="300" style="border: 1px solid black">
       </canvas>
     </div>
-    <div id="chessCommit" class="divWorlds">
-      <h3>Ez itt egy sakktáblakészítő feladat eredménye.</h3>
-    </div>
-  </div>
-    
+  </div>    
 <script>
 var canvas = document.getElementById('Chess');
 var context = canvas.getContext('2d');
@@ -50,7 +49,6 @@ function drawCheckeredPattern(row,col) {
 }
 
 drawCheckeredPattern(8,8);
-</script>
-    
+</script>    
 </body>
 </html>

@@ -74,6 +74,25 @@ h3 {
     background-color: white;
 }
 
+.button {
+    background-color: rgba(210, 120, 70, 1);
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgba(160, 100, 60, 1);
+}
+
+#Datas {
+    margin: 1rem auto;
+    text-align: center;
+}
+
 @media (min-width: 430px) {
     body {
       justify-content: center;

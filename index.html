@@ -10,7 +10,12 @@
 <body>
   <div Class="container">
     <div class="divWorlds">
-      <h3>Ez itt egy sakktábla készítő feladat eredménye. Ez itt egy sakktábla készítő feladat eredménye. Ez itt egy sakktábla készítő feladat eredménye.</h3>
+      <h3>Ez itt egy sakktábla készítő feladat eredménye.A sakktábla alapértelmezetten 8X8 méretű. Most lehetőséget kapsz saját sakktáblát alkotniVedd figyelembe kérlek, hogy maximum 300X300 méretű táblát rajzolhatsz.</h3>
+      <h3 id="Datas">
+      Oszlopok száma: <input id='oszlop' type="number" name="oszlop" min="2" max="300" value='10'>
+      Sorok száma: <input id='sor' type="number" name="sor" min="2" max="300" value='2'>
+        </h3>
+      <div><button class="button" onclick="document.getElementById('Chess').innerHTML=drawCheckeredPattern(oszlop.value,sor.value);">Rajzolj!</button></div>
     </div>
     <div class="divChess">
       <canvas id="Chess" height="300" width="300" style="border: 1px solid black">
@@ -23,23 +28,25 @@ var context = canvas.getContext('2d');
 
 var cW = canvas.width;
 var cH = canvas.height;
+    
+function drawCheckeredPattern(col,row) {
 
-function drawCheckeredPattern(row,col) {
-  
+context.clearRect(0,0,300,300);
+
   var rowH = cH / row ;    /* rowHeight - sormagasság */
   var colW  = cW / col ;   /* colWidth - oszlopszélesség */
   var sorSzam = 1;         /* hányadik sort rajzolom ki */
   var rowCount, colCountStart, colCount = 0;
-
+    
   for ( rowCount = 0; rowCount<cH; rowCount += rowH) {
     if (sorSzam % 2 == 1) {   // Ez a vizsgálat azért kell, hogy a sorok
-      colCountStart = 1;      // minden második sorban ugyanazzal a színnel kezdődjenek,
+      colCountStart = 0;      // minden második sorban ugyanazzal a színnel kezdődjenek,
     } else {                  // vagyis a kiiratást el kell tolni egy 
-      colCountStart = 0;      // sakkmezővel minden egyes sor kiiratása után oda-vissza.
+      colCountStart = 1;      // sakkmezővel minden egyes sor kiiratása után oda-vissza.
     }
     
     // Itt rajzolok megy egy sor mezőt
-    for ( colCount = colCountStart; colCount<col; colCount += 2) {
+    for ( colCount = colCountStart; colCount<oszlop.value; colCount += 2) {
       context.fillRect(colW*colCount,rowCount,colW,rowH);
     }
     sorSzam++;
@@ -48,7 +55,6 @@ function drawCheckeredPattern(row,col) {
   
 }
 
-drawCheckeredPattern(8,8);
 </script>    
 </body>
 </html>

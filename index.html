@@ -7,18 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Practice JavaScript by drawing</title>
 </head>
-<body>
+<body onload="document.getElementById('Chess').innerHTML=drawCheckeredPattern(8,8)">
   <div Class="container">
     <div class="divWorlds">
-      <h3>Ez itt egy sakktábla készítő feladat eredménye.A sakktábla alapértelmezetten 8X8 méretű. Most lehetőséget kapsz saját sakktáblát alkotniVedd figyelembe kérlek, hogy maximum 300X300 méretű táblát rajzolhatsz.</h3>
+      <h3>Ez itt egy sakktábla készítő feladat eredménye. A sakktábla alapértelmezetten 8X8 mezőt tartalmaz. Most lehetőséget kapsz saját sakktáblát alkotni. Vedd figyelembe kérlek, hogy maximum 300X300 méretű táblát rajzolhatsz.</h3>
       <h3 id="Datas">
-      Oszlopok száma: <input id='oszlop' type="number" name="oszlop" min="2" max="300" value='10'>
-      Sorok száma: <input id='sor' type="number" name="sor" min="2" max="300" value='2'>
+      Oszlopok száma: <input id='oszlop' type="number" name="oszlop" min="2" max="300" value='8'><br>
+      Sorok száma: <input id='sor' type="number" name="sor" min="2" max="300" value='8'>
         </h3>
       <div><button class="button" onclick="document.getElementById('Chess').innerHTML=drawCheckeredPattern(oszlop.value,sor.value);">Rajzolj!</button></div>
     </div>
     <div class="divChess">
       <canvas id="Chess" height="300" width="300" style="border: 1px solid black">
+        Az ön böngészője sajnos nem támogatja a canvas eszközt. Az oldal helyes megtekintéséhez frissítse a böngészőjét.
       </canvas>
     </div>
   </div>    
@@ -33,6 +34,12 @@ function drawCheckeredPattern(col,row) {
 
 context.clearRect(0,0,300,300);
 
+if (col<1 || row<1 || col>300 || row>300) {
+    context.textAlign = "center";
+    context.font='20px Arial';
+    context.fillText("A megadott értékekkel nem lehet", 150, 140);
+    context.fillText("megrajzolni a sakktáblát.", 150, 160);
+} else {
   var rowH = cH / row ;    /* rowHeight - sormagasság */
   var colW  = cW / col ;   /* colWidth - oszlopszélesség */
   var sorSzam = 1;         /* hányadik sort rajzolom ki */
@@ -52,7 +59,7 @@ context.clearRect(0,0,300,300);
     sorSzam++;
   }
   context.fillStyle = 'black';
-  
+}
 }
 
 </script>    
